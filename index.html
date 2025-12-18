@@ -1,9 +1,8 @@
-
 <!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>What Is Your Inner Homeopathic Song?</title>  <!-- Google Font -->  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">  <style>
+  <title>Your Inner Homeopathic Song</title>  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">  <style>
     :root{
       --bg1:#f8f6f3;
       --bg2:#eef2f3;
@@ -21,167 +20,181 @@
       min-height:100vh;
     }
 
-    .container{
-      max-width:900px;
-      margin:auto;
-      padding:30px 20px 60px;
-    }
+    .container{max-width:900px;margin:auto;padding:30px 20px 60px}
 
-    header{
-      text-align:center;
-      padding:40px 10px 30px;
-    }
+    header{text-align:center;padding:40px 10px 30px}
 
     header h1{
       font-family:'Playfair Display',serif;
       font-size:2.6rem;
-      font-weight:600;
-      margin-bottom:12px;
+      margin-bottom:10px
     }
 
-    header p{
-      font-size:1.05rem;
-      opacity:.8;
-    }
+    header p{opacity:.8}
 
     .card{
-      background:rgba(255,255,255,.9);
+      background:rgba(255,255,255,.92);
       backdrop-filter:blur(6px);
       border-radius:22px;
-      padding:30px;
+      padding:32px;
       margin-bottom:25px;
       box-shadow:0 20px 40px rgba(0,0,0,.08);
-      animation:fadeIn .6s ease;
+      animation:fadeIn .5s ease
     }
 
-    @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+    @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 
-    .pill{
-      display:inline-block;
-      padding:8px 16px;
-      border-radius:30px;
-      margin:6px;
-      font-size:.85rem;
-      background:#f1f1f1;
-    }
-
-    .pill.plant{background:rgba(111,191,155,.18)}
-    .pill.animal{background:rgba(255,143,163,.18)}
-    .pill.mineral{background:rgba(143,168,255,.18)}
+    .pill{display:inline-block;padding:8px 16px;border-radius:30px;margin:6px;font-size:.85rem}
+    .plant{background:rgba(111,191,155,.18)}
+    .animal{background:rgba(255,143,163,.18)}
+    .mineral{background:rgba(143,168,255,.18)}
 
     .btn{
-      background:#222;
-      color:#fff;
-      border:none;
-      padding:16px 34px;
-      border-radius:40px;
-      font-size:1rem;
-      cursor:pointer;
-      transition:.3s;
+      background:#222;color:#fff;border:none;padding:16px 36px;border-radius:40px;font-size:1rem;cursor:pointer
     }
-
-    .btn:hover{transform:translateY(-1px);opacity:.9}
 
     .options button{
-      width:100%;
-      padding:16px 18px;
-      border-radius:16px;
-      margin:12px 0;
-      border:1px solid #e3e3e3;
-      background:#fafafa;
-      text-align:left;
-      font-size:.95rem;
-      cursor:pointer;
-      transition:.25s;
+      width:100%;padding:16px 18px;border-radius:16px;margin:12px 0;
+      border:1px solid #e2e2e2;background:#fafafa;text-align:left;font-size:.95rem;cursor:pointer
     }
 
-    .options button:hover{
-      background:#f3f3f3;
-      transform:translateY(-1px);
-    }
+    .options button:hover{background:#f3f3f3}
 
     .hidden{display:none}
 
-    .result-box{
-      text-align:center;
-      padding:40px 25px;
-    }
+    .progress{font-size:.85rem;opacity:.6;margin-bottom:10px}
 
-    .song{
-      font-family:'Playfair Display',serif;
-      font-size:2rem;
-      margin-bottom:10px;
-    }
+    .question{font-size:1.2rem;margin-bottom:10px}
 
-    .remedy{
-      font-size:1.1rem;
-      margin:14px 0;
-    }
+    .result-box{text-align:center;padding:40px 25px}
 
-    footer{
-      text-align:center;
-      font-size:.8rem;
-      opacity:.6;
-      margin-top:40px;
-    }
-
+    footer{text-align:center;font-size:.8rem;opacity:.6;margin-top:40px}
   </style></head>
-<body><div class="container"><header>
+<body><div class="container">
+<header>
   <h1>Your Inner Homeopathic Song</h1>
-  <p>A gentle personality mirror inspired by Rajan Sankaran’s <i>Inner Song</i></p>
+  <p>A fun, gentle personality quiz inspired by Rajan Sankaran’s <i>Inner Song</i></p>
 </header><div id="intro" class="card">
-  <h2>🌙 About this experience</h2>
-  <p>
-    Every human being expresses life through a subtle inner pattern — a <b>song</b>.
-    In classical homeopathy, these patterns are broadly understood through three kingdoms.
-  </p>
+  <h2>🌙 Begin the quiz</h2>
+  <p>Answer 20 light, everyday questions. Choose what feels most natural to you.</p>
   <div>
-    <span class="pill plant">🌿 Plant · sensitivity & reaction</span>
-    <span class="pill animal">🐾 Animal · survival & competition</span>
-    <span class="pill mineral">🪨 Mineral · structure & responsibility</span>
+    <span class="pill plant">🌿 Plant · sensitivity</span>
+    <span class="pill animal">🐾 Animal · instinct</span>
+    <span class="pill mineral">🪨 Mineral · structure</span>
   </div>
-  <p style="margin-top:18px">
-    Answer 20 simple, intuitive questions. There are no right or wrong answers.
-  </p>
   <div style="text-align:center;margin-top:25px">
-    <button class="btn" onclick="startQuiz()">Begin the journey</button>
+    <button class="btn" onclick="startQuiz()">Start</button>
   </div>
 </div><div id="quiz" class="card hidden">
-  <h2 id="qTitle"></h2>
-  <div id="options" class="options"></div>
+  <div class="progress" id="progress"></div>
+  <div class="question" id="qText"></div>
+  <div class="options" id="options"></div>
 </div><div id="result" class="card hidden result-box"></div><footer>
   This is a self‑reflection experience inspired by classical homeopathic ideas. Not a medical diagnosis or prescription.
-</footer></div><script>
-const baseQuestions=[
- {q:"A stranger suddenly approaches you in a public place. Your first inner reaction is…",a:[
-  {t:"I feel emotionally uncomfortable or affected",k:"plant"},
-  {t:"I become alert, guarded, or tense",k:"animal"},
-  {t:"I assess the situation and my responsibility",k:"mineral"}
+</footer>
+</div><script>
+const questions=[
+ {q:"What do you usually crave more?",a:[
+  {t:"Sweet or comforting food",k:"plant"},
+  {t:"Spicy or strong flavours",k:"animal"},
+  {t:"Simple, familiar meals",k:"mineral"}
  ]},
- {q:"You are criticised unexpectedly in front of others. What happens inside you?",a:[
-  {t:"I feel hurt and sensitive",k:"plant"},
-  {t:"I feel attacked and react strongly",k:"animal"},
-  {t:"I feel I have failed or disappointed",k:"mineral"}
+ {q:"If a stranger approaches you suddenly, you…",a:[
+  {t:"Feel emotionally uneasy",k:"plant"},
+  {t:"Become alert or guarded",k:"animal"},
+  {t:"Observe and assess calmly",k:"mineral"}
  ]},
- {q:"When life becomes overwhelming, your mind naturally goes to…",a:[
-  {t:"My feelings and how deeply this affects me",k:"plant"},
-  {t:"How to protect myself or regain control",k:"animal"},
-  {t:"How to manage, organise, or fix things",k:"mineral"}
+ {q:"When you’re hurt, you mostly…",a:[
+  {t:"Feel deeply and withdraw",k:"plant"},
+  {t:"React strongly",k:"animal"},
+  {t:"Try to stay composed",k:"mineral"}
  ]},
- {q:"In relationships, your usual struggle is…",a:[
-  {t:"Feeling too much or getting hurt easily",k:"plant"},
-  {t:"Power struggles, jealousy, or boundaries",k:"animal"},
-  {t:"Carrying responsibility or expectations",k:"mineral"}
+ {q:"Your biggest daily stress comes from…",a:[
+  {t:"Emotional situations",k:"plant"},
+  {t:"Conflict or pressure",k:"animal"},
+  {t:"Responsibilities",k:"mineral"}
  ]},
- {q:"When plans suddenly change, you mostly feel…",a:[
-  {t:"Emotionally unsettled",k:"plant"},
-  {t:"Irritated or threatened",k:"animal"},
-  {t:"Anxious about losing structure",k:"mineral"}
+ {q:"At social gatherings, you feel…",a:[
+  {t:"Sensitive to the atmosphere",k:"plant"},
+  {t:"Alert and observant",k:"animal"},
+  {t:"Comfortable with structure",k:"mineral"}
+ ]},
+ {q:"When plans change suddenly…",a:[
+  {t:"I feel emotionally unsettled",k:"plant"},
+  {t:"I feel irritated",k:"animal"},
+  {t:"I try to reorganise",k:"mineral"}
+ ]},
+ {q:"Your energy level is usually…",a:[
+  {t:"Fluctuating",k:"plant"},
+  {t:"Intense bursts",k:"animal"},
+  {t:"Steady",k:"mineral"}
+ ]},
+ {q:"In relationships you tend to…",a:[
+  {t:"Adapt a lot",k:"plant"},
+  {t:"Protect your space",k:"animal"},
+  {t:"Take responsibility",k:"mineral"}
+ ]},
+ {q:"You feel most uncomfortable when…",a:[
+  {t:"People are emotionally cold",k:"plant"},
+  {t:"You feel dominated",k:"animal"},
+  {t:"Things feel chaotic",k:"mineral"}
+ ]},
+ {q:"Your decision‑making style is…",a:[
+  {t:"Emotion‑based",k:"plant"},
+  {t:"Instinctive",k:"animal"},
+  {t:"Logical",k:"mineral"}
+ ]},
+ {q:"You relax best by…",a:[
+  {t:"Music or emotions",k:"plant"},
+  {t:"Physical activity",k:"animal"},
+  {t:"Routine",k:"mineral"}
+ ]},
+ {q:"Your biggest fear feels like…",a:[
+  {t:"Being emotionally hurt",k:"plant"},
+  {t:"Being attacked or controlled",k:"animal"},
+  {t:"Failing responsibilities",k:"mineral"}
+ ]},
+ {q:"You prefer work that is…",a:[
+  {t:"Creative",k:"plant"},
+  {t:"Competitive",k:"animal"},
+  {t:"Structured",k:"mineral"}
+ ]},
+ {q:"When someone disagrees with you…",a:[
+  {t:"It affects you emotionally",k:"plant"},
+  {t:"You defend strongly",k:"animal"},
+  {t:"You stay firm but calm",k:"mineral"}
+ ]},
+ {q:"Your sleep is often…",a:[
+  {t:"Disturbed by emotions",k:"plant"},
+  {t:"Light and alert",k:"animal"},
+  {t:"Regular",k:"mineral"}
+ ]},
+ {q:"Your childhood memory feels…",a:[
+  {t:"Emotionally vivid",k:"plant"},
+  {t:"Survival‑oriented",k:"animal"},
+  {t:"Duty‑oriented",k:"mineral"}
+ ]},
+ {q:"When under pressure you…",a:[
+  {t:"Feel overwhelmed",k:"plant"},
+  {t:"Push back",k:"animal"},
+  {t:"Try to manage",k:"mineral"}
+ ]},
+ {q:"You value most…",a:[
+  {t:"Connection",k:"plant"},
+  {t:"Strength",k:"animal"},
+  {t:"Stability",k:"mineral"}
+ ]},
+ {q:"Your inner voice says…",a:[
+  {t:"I feel deeply",k:"plant"},
+  {t:"I must protect",k:"animal"},
+  {t:"I must manage",k:"mineral"}
+ ]},
+ {q:"Overall, you experience life as…",a:[
+  {t:"Emotionally intense",k:"plant"},
+  {t:"A struggle for space",k:"animal"},
+  {t:"A system to maintain",k:"mineral"}
  ]}
 ];
-
-let questions=[];
-while(questions.length<20){questions.push(baseQuestions[questions.length%baseQuestions.length]);}
 
 let index=0;
 let score={plant:0,animal:0,mineral:0};
@@ -194,13 +207,14 @@ function startQuiz(){
 
 function showQ(){
  const q=questions[index];
- document.getElementById('qTitle').innerHTML = `<div style="opacity:.6;font-size:.85rem">Question ${index+1} of 20</div><div style="margin-top:8px;font-size:1.2rem">${q.q}</div>`;
+ document.getElementById('progress').innerText=`Question ${index+1} of 20`;
+ document.getElementById('qText').innerText=q.q;
  const opt=document.getElementById('options');
  opt.innerHTML='';
  q.a.forEach(o=>{
   const b=document.createElement('button');
   b.innerText=o.t;
-  b.onclick=()=>{score[o.k]++;index++;index<20?showQ():showResult();};
+  b.onclick=()=>{score[o.k]++;index++;index<questions.length?showQ():showResult();};
   opt.appendChild(b);
  });
 }
@@ -208,20 +222,17 @@ function showQ(){
 function showResult(){
  document.getElementById('quiz').classList.add('hidden');
  document.getElementById('result').classList.remove('hidden');
-
  let song=Object.keys(score).reduce((a,b)=>score[a]>score[b]?a:b);
  const data={
-  plant:{title:"🌿 Plant Song",remedy:"Ignatia",desc:"You experience life through sensitivity, emotional depth and reaction."},
-  animal:{title:"🐾 Animal Song",remedy:"Lachesis",desc:"You perceive the world through intensity, survival and comparison."},
-  mineral:{title:"🪨 Mineral Song",remedy:"Sulphur",desc:"You live through ideas, responsibility and inner structure."}
+  plant:{title:"🌿 Plant Song",remedy:"Ignatia",desc:"Sensitivity, emotional depth, and adaptability."},
+  animal:{title:"🐾 Animal Song",remedy:"Lachesis",desc:"Instinct, intensity, and survival awareness."},
+  mineral:{title:"🪨 Mineral Song",remedy:"Sulphur",desc:"Structure, ideas, and responsibility."}
  }[song];
-
  document.getElementById('result').innerHTML=`
-  <div class="song">${data.title}</div>
-  <p class="remedy"><b>Most probable constitutional remedy:</b> ${data.remedy}</p>
+  <h2>${data.title}</h2>
+  <p><b>Most probable constitutional remedy:</b> ${data.remedy}</p>
   <p><i>${data.desc}</i></p>
-  <p style="margin-top:20px;opacity:.75">This is a mirror, not a label. Sit with it gently.</p>
- `;
+  <p style="opacity:.7;margin-top:20px">This is a mirror for self‑reflection, not a label.</p>`;
 }
 </script></body>
 </html>
