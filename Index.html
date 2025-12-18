@@ -1,0 +1,226 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>What Is Your Inner Homeopathic Song?</title>  <!-- Google Font -->  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">  <style>
+    :root{
+      --bg1:#f8f6f3;
+      --bg2:#eef2f3;
+      --plant:#6fbf9b;
+      --animal:#ff8fa3;
+      --mineral:#8fa8ff;
+      --ink:#2b2b2b;
+    }
+
+    body{
+      margin:0;
+      font-family:'Inter',sans-serif;
+      background:linear-gradient(135deg,var(--bg1),var(--bg2));
+      color:var(--ink);
+      min-height:100vh;
+    }
+
+    .container{
+      max-width:900px;
+      margin:auto;
+      padding:30px 20px 60px;
+    }
+
+    header{
+      text-align:center;
+      padding:40px 10px 30px;
+    }
+
+    header h1{
+      font-family:'Playfair Display',serif;
+      font-size:2.6rem;
+      font-weight:600;
+      margin-bottom:12px;
+    }
+
+    header p{
+      font-size:1.05rem;
+      opacity:.8;
+    }
+
+    .card{
+      background:rgba(255,255,255,.9);
+      backdrop-filter:blur(6px);
+      border-radius:22px;
+      padding:30px;
+      margin-bottom:25px;
+      box-shadow:0 20px 40px rgba(0,0,0,.08);
+      animation:fadeIn .6s ease;
+    }
+
+    @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+    .pill{
+      display:inline-block;
+      padding:8px 16px;
+      border-radius:30px;
+      margin:6px;
+      font-size:.85rem;
+      background:#f1f1f1;
+    }
+
+    .pill.plant{background:rgba(111,191,155,.18)}
+    .pill.animal{background:rgba(255,143,163,.18)}
+    .pill.mineral{background:rgba(143,168,255,.18)}
+
+    .btn{
+      background:#222;
+      color:#fff;
+      border:none;
+      padding:16px 34px;
+      border-radius:40px;
+      font-size:1rem;
+      cursor:pointer;
+      transition:.3s;
+    }
+
+    .btn:hover{transform:translateY(-1px);opacity:.9}
+
+    .options button{
+      width:100%;
+      padding:16px 18px;
+      border-radius:16px;
+      margin:12px 0;
+      border:1px solid #e3e3e3;
+      background:#fafafa;
+      text-align:left;
+      font-size:.95rem;
+      cursor:pointer;
+      transition:.25s;
+    }
+
+    .options button:hover{
+      background:#f3f3f3;
+      transform:translateY(-1px);
+    }
+
+    .hidden{display:none}
+
+    .result-box{
+      text-align:center;
+      padding:40px 25px;
+    }
+
+    .song{
+      font-family:'Playfair Display',serif;
+      font-size:2rem;
+      margin-bottom:10px;
+    }
+
+    .remedy{
+      font-size:1.1rem;
+      margin:14px 0;
+    }
+
+    footer{
+      text-align:center;
+      font-size:.8rem;
+      opacity:.6;
+      margin-top:40px;
+    }
+
+  </style></head>
+<body><div class="container"><header>
+  <h1>Your Inner Homeopathic Song</h1>
+  <p>A gentle personality mirror inspired by Rajan Sankaran’s <i>Inner Song</i></p>
+</header><div id="intro" class="card">
+  <h2>🌙 About this experience</h2>
+  <p>
+    Every human being expresses life through a subtle inner pattern — a <b>song</b>.
+    In classical homeopathy, these patterns are broadly understood through three kingdoms.
+  </p>
+  <div>
+    <span class="pill plant">🌿 Plant · sensitivity & reaction</span>
+    <span class="pill animal">🐾 Animal · survival & competition</span>
+    <span class="pill mineral">🪨 Mineral · structure & responsibility</span>
+  </div>
+  <p style="margin-top:18px">
+    Answer 20 simple, intuitive questions. There are no right or wrong answers.
+  </p>
+  <div style="text-align:center;margin-top:25px">
+    <button class="btn" onclick="startQuiz()">Begin the journey</button>
+  </div>
+</div><div id="quiz" class="card hidden">
+  <h2 id="qTitle"></h2>
+  <div id="options" class="options"></div>
+</div><div id="result" class="card hidden result-box"></div><footer>
+  This is a self‑reflection experience inspired by classical homeopathic ideas. Not a medical diagnosis or prescription.
+</footer></div><script>
+const baseQuestions=[
+ {q:"When life becomes overwhelming, you mostly feel…",a:[
+  {t:"Deeply affected, emotionally sensitive",k:"plant"},
+  {t:"Alert, defensive or intense",k:"animal"},
+  {t:"Worried about responsibility or failure",k:"mineral"}
+ ]},
+ {q:"What kind of pain stays with you the longest?",a:[
+  {t:"Emotional hurt or disappointment",k:"plant"},
+  {t:"Betrayal, threat or injustice",k:"animal"},
+  {t:"Feeling incapable or not good enough",k:"mineral"}
+ ]},
+ {q:"Your inner voice under stress says…",a:[
+  {t:"This is too much for me",k:"plant"},
+  {t:"I must protect myself",k:"animal"},
+  {t:"I must not fail",k:"mineral"}
+ ]},
+ {q:"In close relationships you tend to…",a:[
+  {t:"Adapt and feel deeply",k:"plant"},
+  {t:"Maintain power or boundaries",k:"animal"},
+  {t:"Carry responsibility",k:"mineral"}
+ ]},
+ {q:"When criticised, your first reaction is…",a:[
+  {t:"Feeling hurt or withdrawing",k:"plant"},
+  {t:"Reacting strongly",k:"animal"},
+  {t:"Feeling you failed",k:"mineral"}
+ ]}
+];
+
+let questions=[];
+while(questions.length<20){questions.push(baseQuestions[questions.length%baseQuestions.length]);}
+
+let index=0;
+let score={plant:0,animal:0,mineral:0};
+
+function startQuiz(){
+ document.getElementById('intro').classList.add('hidden');
+ document.getElementById('quiz').classList.remove('hidden');
+ showQ();
+}
+
+function showQ(){
+ const q=questions[index];
+ document.getElementById('qTitle').innerText=`Question ${index+1} of 20`;
+ const opt=document.getElementById('options');
+ opt.innerHTML='';
+ q.a.forEach(o=>{
+  const b=document.createElement('button');
+  b.innerText=o.t;
+  b.onclick=()=>{score[o.k]++;index++;index<20?showQ():showResult();};
+  opt.appendChild(b);
+ });
+}
+
+function showResult(){
+ document.getElementById('quiz').classList.add('hidden');
+ document.getElementById('result').classList.remove('hidden');
+
+ let song=Object.keys(score).reduce((a,b)=>score[a]>score[b]?a:b);
+ const data={
+  plant:{title:"🌿 Plant Song",remedy:"Ignatia",desc:"You experience life through sensitivity, emotional depth and reaction."},
+  animal:{title:"🐾 Animal Song",remedy:"Lachesis",desc:"You perceive the world through intensity, survival and comparison."},
+  mineral:{title:"🪨 Mineral Song",remedy:"Sulphur",desc:"You live through ideas, responsibility and inner structure."}
+ }[song];
+
+ document.getElementById('result').innerHTML=`
+  <div class="song">${data.title}</div>
+  <p class="remedy"><b>Most probable constitutional remedy:</b> ${data.remedy}</p>
+  <p><i>${data.desc}</i></p>
+  <p style="margin-top:20px;opacity:.75">This is a mirror, not a label. Sit with it gently.</p>
+ `;
+}
+</script></body>
+</html>
