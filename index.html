@@ -193,7 +193,7 @@ function startQuiz(){
 
 function showQ(){
  const q=questions[index];
- document.getElementById('qTitle').innerText=`Question ${index+1} of 20`;
+ document.getElementById('qTitle').innerHTML = `<div style="opacity:.6;font-size:.85rem">Question ${index+1} of 20</div><div style="margin-top:8px;font-size:1.2rem">${q.q}</div>`;
  const opt=document.getElementById('options');
  opt.innerHTML='';
  q.a.forEach(o=>{
@@ -223,4 +223,4 @@ function showResult(){
  `;
 }
 </script></body>
-</html>
+  </html>
