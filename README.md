@@ -1,2 +1,2 @@
-# The-ultimate-Homeopathy-Quiz---Find-your-inner-voice
+# inner-song
 Homeopathy quiz, inner song, inner Constitution
